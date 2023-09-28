@@ -1,0 +1,30 @@
+<div class="container mt-2" style="border: 3px solid orange; padding: 2%;">
+<div>
+<h2>Pedidos en mostrador</h2>
+    <div *ngFor="let item of listaPedidos">
+        <p>
+            N° {{item.numero}} - Detalle: {{item.detalle}} - estado::{{item.estado}}
+        
+        <button *ngIf="item.estado !== 'Entregado'" (click)="Entregar(item.numero)" >Entregar</button>
+    </p>
+    </div>
+
+<hr>
+
+    <div>
+      <h2>Tomar un pedido</h2>
+        <form (ngSubmit)="tomarPedido()" #pedidoForm="ngForm">
+            
+            <div class="form-group">
+            <label for="detalle">Detalle</label>
+            <input type="text" class="form-control" id="detalle" name="detalle" [(ngModel)]="pedidoNuevo.detalle" required>
+         
+
+            <button type="submit" class="btn btn-primary my-2" [disabled]="!pedidoForm.form.valid">Tomar pedido</button>  
+    </div>
+
+        </form> 
+    </div>
+</div>
+
+</div>

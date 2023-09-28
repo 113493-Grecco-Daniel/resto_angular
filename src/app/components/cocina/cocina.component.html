@@ -1,0 +1,42 @@
+<div class="container my-2" style="border: 3px solid green; padding: 2%;">
+<div>
+    <h2>Pedidos Pendientes</h2>
+        <div *ngFor="let item of listaPedidos">
+            <p *ngIf="item.estado === 'Pendiente'">
+                N° {{item.numero}} - Detalle: {{item.detalle}} - estado:{{item.estado}}
+            
+          
+
+            <button  (click)="CambiarAEnPreparacion(item.numero)">Comenzar a preparar</button>
+        
+        </p>
+        </div>
+    
+    <hr>
+
+    <div>
+    <h2>Pedidos en preparación</h2>
+        <div *ngFor="let item of listaPedidos">
+            <p  *ngIf="item.estado === 'En preparación'">
+                N° {{item.numero}} - Detalle: {{item.detalle}} - estado::{{item.estado}}
+            
+            <button (click)="CambiarAEnElHorno(item.numero)" >Meter al horno</button>
+        </p>
+        </div>
+
+    <hr>
+
+    <div>
+        <h2>Pedidos en El horno</h2>
+            <div *ngFor="let item of listaPedidos">
+                <p *ngIf="item.estado === 'En el horno'" >
+                    N° {{item.numero}} - Detalle: {{item.detalle}} - estado::{{item.estado}}
+                
+                <button (click)="CambiarAListoParaEntregar(item.numero)" >Pasar a mostrador</button>
+            </p>
+            </div>
+        
+        <hr>
+
+</div>
+</div>
